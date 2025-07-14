@@ -292,6 +292,26 @@ Semua endpoint di bawah ini memerlukan autentikasi.
 #### `DELETE /api/employees/{id}`
 - **Deskripsi**: Menghapus data karyawan.
 
+---
+
+### 6.4. Dokumentasi Interaktif (Swagger)
+
+Proyek ini dilengkapi dengan dokumentasi API interaktif yang dibuat menggunakan Swagger (OpenAPI) melalui package `l5-swagger`. Anda dapat melihat semua endpoint, parameter, dan mencoba langsung request API melalui antarmuka Swagger UI.
+
+<p align="center">
+  <a href="http://127.0.0.1:8000/api/documentation" target="_blank"><img src="https://img.shields.io/badge/Swagger-API%20Docs-green.svg" alt="Swagger API Docs"></a>
+</p>
+
+- **URL Lokal**: Setelah menjalankan server (`php artisan serve`), akses dokumentasi di:
+  `http://127.0.0.1:8000/api/documentation`
+
+- **Generate/Update Dokumentasi**:
+  Jika Anda membuat perubahan pada anotasi OpenAPI di dalam file controller (misalnya di `app/Http/Controllers/Api/`), jalankan perintah berikut untuk memperbarui file dokumentasi JSON:
+  ```bash
+  php artisan l5-swagger:generate
+  ```
+
+
 ## 7. Penanganan Error
 API menggunakan kode status HTTP standar untuk mengindikasikan keberhasilan atau kegagalan request.
 
@@ -337,4 +357,3 @@ Jika Anda memiliki pertanyaan atau ingin berkontribusi, silakan hubungi:
 - **Email**: frhn.r3@gmail.com
 
 ---
-
