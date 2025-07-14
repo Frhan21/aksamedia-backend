@@ -10,6 +10,104 @@ use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
 {
+
+    /**
+     * @OA\Get(
+     *     path="/api/employees",
+     *     summary="Get All Employees",
+     *     tags={"Employee"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="name",
+     *         in="query",
+     *         description="Filter employees by name",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="division_id",
+     *         in="query",
+     *         description="Filter by division UUID",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="List of employees"
+     *     )
+     * )
+     * * @OA\Post(
+     *     path="/api/employees",
+     *     summary="Create Employee",
+     *     tags={"Employee"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 required={"name","phone","division","position"},
+     *                 @OA\Property(property="image", type="string", format="binary"),
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="phone", type="string"),
+     *                 @OA\Property(property="division", type="string"),
+     *                 @OA\Property(property="position", type="string")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Employee created"
+     *     )
+     * )
+     *
+     * * @OA\Put(
+     *     path="/api/employees/{id}",
+     *     summary="Update Employee",
+     *     tags={"Employee"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(property="image", type="string", format="binary"),
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="phone", type="string"),
+     *                 @OA\Property(property="division", type="string"),
+     *                 @OA\Property(property="position", type="string")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Employee updated"
+     *     )
+     * )
+     * * @OA\Delete(
+     *     path="/api/employees/{id}",
+     *     summary="Delete Employee",
+     *     tags={"Employee"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Employee deleted"
+     *     )
+     * )
+     */
+
     public function index(Request $request)
     {
         $query = Employee::with('divisions');

@@ -7,6 +7,27 @@ use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * @OA\Get(
+ *     path="/api/divisions",
+ *     summary="Get All Divisions",
+ *     tags={"Division"},
+ *     security={{"bearerAuth":{}}},
+ *     @OA\Parameter(
+ *         name="name",
+ *         in="query",
+ *         description="Filter divisions by name",
+ *         required=false,
+ *         @OA\Schema(type="string")
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="List of divisions"
+ *     )
+ * )
+ */
+
+
 class DivisionController extends Controller
 {
     public function index(Request $request)

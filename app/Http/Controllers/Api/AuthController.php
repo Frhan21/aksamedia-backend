@@ -9,6 +9,56 @@ use Illuminate\Support\Facades\Hash;
 
 use function Laravel\Prompts\password;
 
+/**
+ * @OA\Post(
+ *     path="/api/login",
+ *     summary="Login Admin",
+ *     tags={"Authentication"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"username","password"},
+ *             @OA\Property(property="username", type="string", example="admin"),
+ *             @OA\Property(property="password", type="string", example="pastibisa")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Successful Login",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="string", example="success"),
+ *             @OA\Property(property="message", type="string", example="Login successful"),
+ *             @OA\Property(property="data", type="object",
+ *                 @OA\Property(property="token", type="string"),
+ *                 @OA\Property(property="admin", type="object",
+ *                     @OA\Property(property="id", type="string"),
+ *                     @OA\Property(property="name", type="string"),
+ *                     @OA\Property(property="username", type="string"),
+ *                     @OA\Property(property="phone", type="string"),
+ *                     @OA\Property(property="email", type="string"),
+ *                 )
+ *             )
+ *         )
+ *     )
+ * )
+ *
+ * * @OA\Post(
+ *     path="/api/logout",
+ *     summary="Logout Admin",
+ *     tags={"Authentication"},
+ *     security={{"bearerAuth":{}}},
+ *     @OA\Response(
+ *         response=200,
+ *         description="Successful Logout",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="status", type="string", example="success"),
+ *             @OA\Property(property="message", type="string", example="Logout successful")
+ *         )
+ *     )
+ * )
+ */
+
+
 class AuthController extends Controller
 {
     // Login admin

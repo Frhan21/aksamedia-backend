@@ -1,0 +1,359 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Aksamedia API Documentation",
+        "description": "Dokumentasi API Backend Test",
+        "contact": {
+            "email": "support@aksamedia.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login Admin",
+                "operationId": "f2a1e12b2f5fc17624bd407c8caa92a1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "admin"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "pastibisa"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Login successful"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "admin": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "username": {
+                                                            "type": "string"
+                                                        },
+                                                        "phone": {
+                                                            "type": "string"
+                                                        },
+                                                        "email": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout Admin",
+                "operationId": "95a63d6a158c518ae2194b3e54776ed5",
+                "responses": {
+                    "200": {
+                        "description": "Successful Logout",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Logout successful"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/divisions": {
+            "get": {
+                "tags": [
+                    "Division"
+                ],
+                "summary": "Get All Divisions",
+                "operationId": "e54de231a0076eb3909cbd9731d8185f",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filter divisions by name",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of divisions"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/employees": {
+            "get": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Get All Employees",
+                "operationId": "b9b73e1873c5fe36b951f014f711e4fa",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filter employees by name",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "division_id",
+                        "in": "query",
+                        "description": "Filter by division UUID",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of employees"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Create Employee",
+                "operationId": "c1493d9ca893734eabb55b0b8aabe793",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "phone",
+                                    "division",
+                                    "position"
+                                ],
+                                "properties": {
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "division": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Employee created"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/employees/{id}": {
+            "put": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Update Employee",
+                "operationId": "9ee2baff687691a2606869931632aa3d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "type": "string"
+                                    },
+                                    "division": {
+                                        "type": "string"
+                                    },
+                                    "position": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Employee updated"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Delete Employee",
+                "operationId": "2d535a3d2b9359c3813d5a75ebf9fbec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Authentication"
+        },
+        {
+            "name": "Division",
+            "description": "Division"
+        },
+        {
+            "name": "Employee",
+            "description": "Employee"
+        }
+    ]
+}
