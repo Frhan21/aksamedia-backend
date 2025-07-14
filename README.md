@@ -1,6 +1,4 @@
---- a/d:\2024 - NGODING\aksamedia-backend\README.md
-+++ b/d:\2024 - NGODING\aksamedia-backend\README.md
-@@ -1,59 +1,114 @@
+
 -<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 +<h1 align="center">Aksa Media Backend</h1>
  
