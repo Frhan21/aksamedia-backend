@@ -333,8 +333,8 @@ Proyek ini dilisensikan di bawah **MIT License**. Lihat file `LICENSE.md` untuk 
 
 ## 11. Kontak
 Jika Anda memiliki pertanyaan atau ingin berkontribusi, silakan hubungi:
-- **Nama Pengembang**: [Nama Anda]
-- **Email**: [email@gmail.com]
+- **Nama Pengembang**: M Farhan Ramadhan
+- **Email**: frhn.r3@gmail.com
 
 ---
 
