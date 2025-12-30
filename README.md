@@ -351,6 +351,11 @@ Berikut adalah langkah-langkah umum untuk mendeploy aplikasi Laravel:
 ## 10. Lisensi
 Proyek ini dilisensikan di bawah **MIT License**. Lihat file `LICENSE.md` untuk detail lebih lanjut.
 
+
+## 12. Postman Project Link 
+Kamu bisa akses dilink ini 
+`https://web.postman.co/workspace/4cc3859a-bdc7-450b-9390-e6b118f634b2/collection/27671715-7004e5a5-90fb-429c-822b-78fb8e4f89d2?action=share&source=copy-link&creator=27671715`
+
 ## 11. Kontak
 Jika Anda memiliki pertanyaan atau ingin berkontribusi, silakan hubungi:
 - **Nama Pengembang**: M Farhan Ramadhan
