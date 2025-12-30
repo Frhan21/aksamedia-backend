@@ -20,19 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $appUrl = config('app.url');
-
-        if (! empty($appUrl)) {
-            // Normalize APP_URL so it never ends with a duplicated /api segment.
-            $normalizedRoot = preg_replace('#/api$#', '', rtrim($appUrl, '/'));
-
-            if (! empty($normalizedRoot) && $normalizedRoot !== $appUrl) {
-                config(['app.url' => $normalizedRoot]);
-            }
-
-            if ($this->app->environment('production')) {
-                URL::forceRootUrl(config('app.url'));
-            }
-        }
+        if ($this->app->environment('production')) {
+        \URL::forceScheme('https');
+    }
     }
 }
