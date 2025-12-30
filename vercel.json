@@ -7,7 +7,8 @@
             "maxDuration": 10
         }
     },
-    "buildCommand": "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan event:cache && npm ci && npm run build",
+    "installCommand": "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\" && php composer-setup.php --install-dir=/tmp --filename=composer && php -r \"unlink('composer-setup.php');\" && /tmp/composer install --no-dev --optimize-autoloader && npm ci",
+    "buildCommand": "php artisan config:cache && php artisan route:cache && php artisan event:cache && npm run build",
     "routes": [
         {
             "src": "/build/(.*)",
