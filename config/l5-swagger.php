@@ -12,7 +12,7 @@ return [
                 /*
                  * Route for accessing api documentation interface
                  */
-                'api' => '/docs',
+                'api' => 'api/documentation',
             ],
             'paths' => [
                 /*
@@ -23,7 +23,9 @@ return [
                 /*
                 * Edit to set path where swagger ui assets should be stored
                 */
-                'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
+                // 'swagger_ui_assets_path' => env('L5_SWAGGER_UI_ASSETS_PATH', 'vendor/swagger-api/swagger-ui/dist/'),
+
+                'swagger_ui_assets_path' => 'https://aksamedia-backend-tau.vercel.app/docs/asset',
 
                 /*
                  * File name of the generated json documentation file
